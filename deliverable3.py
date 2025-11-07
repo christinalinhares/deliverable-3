@@ -20,5 +20,10 @@ print(data.info())
 #gives amount of values for each column, and type of value, object or float
 
 print(data.describe())
-# gives count, mean, standard deviation etc for each numerical column
+#gives count, mean, standard deviation etc for each numerical column
+
+
+print(data.duplicated().sum())
+data = data.drop_duplicates()
+#find how many duplicates there are and delete them
 
