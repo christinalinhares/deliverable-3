@@ -120,3 +120,68 @@ print("Frequency counts:", data["Lead Studio"].value_counts())
 print("Mode:", data["Lead Studio"].mode().values)
 print("Unique values:", data["Lead Studio"].nunique())
 
+
+#4:Univariate graphical EDA
+
+#Audience score %
+
+#a) Custom and appropriate number of bins
+
+sns.displot(data, x="Audience score %", bins=20)
+
+#b) Conditioning on other variables
+
+sns.displot(data, x="Audience score %", hue="Genre", element="step")
+
+#c) Stacked histogram
+
+sns.displot(data, x="Audience score %", hue="Genre", multiple="stack")
+
+# (d) Dodge bars
+
+sns.displot(data, x="Audience score %", hue="Genre", multiple="dodge")
+
+# (e) Normalized histogram statistics
+
+sns.displot(data, x="Audience score %", hue="Genre", stat="density", common_norm=False)
+
+# (f) Kernel density estimation
+
+sns.displot(data, x="Audience score %", kind="kde")
+
+# (g) Empirical cumulative distribution
+
+sns.displot(data, x="Audience score %", hue="Genre", kind="ecdf")
+
+
+#Profitability
+
+#a) Custom and appropriate number of bins
+
+sns.displot(data, x="Profitability", bins=20)
+
+#b) Conditioning on other variables
+
+sns.displot(data, x="Profitability", hue="Lead Studio", element="step")
+
+#c) Stacked histogram
+
+sns.displot(data, x="Profitability", hue="Lead Studio", multiple="stack")
+
+# (d) Dodge bars
+
+sns.displot(data, x="Profitability", hue="Lead Studio", multiple="dodge")
+
+# (e) Normalized histogram statistics
+
+sns.displot(data, x="Profitability", hue="Lead Studio", stat="density", common_norm=False)
+
+# (f) Kernel density estimation
+
+sns.displot(data, x="Profitability", kind="kde")
+
+# (g) Empirical cumulative distribution
+
+sns.displot(data, x="Profitability", hue="Lead Studio", kind="ecdf")
+
+
