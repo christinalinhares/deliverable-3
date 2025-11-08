@@ -158,7 +158,7 @@ sns.displot(data, x="Audience score %", hue="Genre", kind="ecdf")
 
 #a) Custom and appropriate number of bins
 
-sns.displot(data, x="Profitability", bins=20)
+sns.displot(data, x="Profitability", bins=15)
 
 #b) Conditioning on other variables
 
@@ -185,3 +185,95 @@ sns.displot(data, x="Profitability", kind="kde")
 sns.displot(data, x="Profitability", hue="Lead Studio", kind="ecdf")
 
 
+#Rotten Tomatoes %
+
+#a) Custom and appropriate number of bins
+
+sns.displot(data, x="Rotten Tomatoes %", bins=20)
+
+#b) Conditioning on other variables
+
+sns.displot(data, x="Rotten Tomatoes %", hue="Genre", element="step")
+
+#c) Stacked histogram
+
+sns.displot(data, x="Rotten Tomatoes %", hue="Genre", multiple="stack")
+
+# (d) Dodge bars
+
+sns.displot(data, x="Rotten Tomatoes %", hue="Genre", multiple="dodge")
+
+# (e) Normalized histogram statistics
+
+sns.displot(data, x="Rotten Tomatoes %", hue="Genre", stat="density", common_norm=False)
+
+# (f) Kernel density estimation
+
+sns.displot(data, x="Rotten Tomatoes %", kind="kde")
+
+# (g) Empirical cumulative distribution
+
+sns.displot(data, x="Rotten Tomatoes %", hue="Genre", kind="ecdf")
+
+
+
+#Worldwide Gross
+
+#a) Custom and appropriate number of bins
+
+#sns.displot(data, x="Worldwide Gross", bins=15)
+
+#b) Conditioning on other variables
+
+#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", element="step")
+
+#c) Stacked histogram
+
+#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="stack")
+
+# (d) Dodge bars
+
+#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="dodge")
+
+# (e) Normalized histogram statistics
+
+#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", stat="density", common_norm=False)
+
+# (f) Kernel density estimation
+
+#sns.displot(data, x="Worldwide Gross", kind="kde")
+
+# (g) Empirical cumulative distribution
+
+#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", kind="ecdf")
+
+
+#Year
+
+#a) Custom and appropriate number of bins
+
+sns.displot(data, x="Year", discrete=True)
+
+#b) Conditioning on other variables
+
+sns.displot(data, x="Year", hue="Genre", element="step", discrete=True)
+
+#c) Stacked histogram
+
+sns.displot(data, x="Year", hue="Genre", multiple="stack", discrete=True)
+
+# (d) Dodge bars
+
+sns.displot(data, x="Year", hue="Genre", multiple="dodge", discrete=True)
+
+# (e) Normalized histogram statistics
+
+sns.displot(data, x="Year", hue="Genre", stat="density", common_norm=False, discrete=True)
+
+# (f) Kernel density estimation
+
+#not apllicable, KDE is only for continuous numeric data
+
+# (g) Empirical cumulative distribution
+
+sns.displot(data, x="Year", hue="Genre", kind="ecdf")
