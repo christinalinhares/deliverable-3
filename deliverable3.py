@@ -290,33 +290,45 @@ sns.displot(data, x="Year", hue="Genre", kind="ecdf")
 #a. 1 
 crosstab_1=pd.crosstab(data["Genre"],data["Rotten Tomatoes %"])
 print(crosstab_1)
+#This table shows the distribution of rotten tomatoes scores across different genres. From the table, we can see that certain genres like animation have higher reviews and are more consistently well reviewed, while genres like comedy or romance have more variability in ratings(mix of low and high scores) indicating more mixed critical reviews.   
 
 #a. 2
 crosstab_2=pd.crosstab(data["Audience score %"],data["Profitability"])
 print(crosstab_2)
+#This shows the relationship between the audience score and the movie profitability. Each number shows how many movies had a certain audience rating and a certain level of profit. It tells us that movies with higher audience scores often have more profitability.
 
 #a. 3
 crosstab_3=pd.crosstab(data["Lead Studio"],data["Year"])
 print(crosstab_3)
+#This crosstab shows how many movies each lead studio released per year. As we can see, large studios like Disney, Warner Bros., and Universal released movies every year which shows how consistent they are. Smaller studios like Lionsgate, Weinstein Company and 20th Century Fox had fewer released per year which shows the low consistence.
 
 
-#b) 
+#b)
+
+#b. 1 
 crosstab_1_percent=pd.crosstab(data["Genre"],data["Rotten Tomatoes %"],normalize="index").round(3)
 print(crosstab_1_percent)
+#This normalized crosstab shows the proportion of each genre within evrry rotten tomatoe score value. We use normalize index to tell pandas to convert the counts into proportions(percentages) within each row. 
 
-#a. 2
+
+
+#b. 2
 crosstab_2_percent=pd.crosstab(data["Audience score %"],data["Profitability"],normalize="columns").round(3)
 print(crosstab_2_percent)
+#This normalized crosstab shows how the audience scores affect the profitability. We use normalize columns so that each column sumns up to 1. 
 
-#a. 3
+
+#b. 3
 crosstab_3_percent=pd.crosstab(data["Lead Studio"],data["Year"],normalize=True).round(3)
 print(crosstab_3_percent)
+#This normalized crosstab shows how many movies each lead studio come out per year. We use normalized true which makes the entire table sum up to 1(100%)
+
 
 #c) Three way frequency 
 #We are using Genre, Lead Studio, and Year 
 threeway=pd.crosstab([data["Genre"],data['Lead Studio']],data["Year"])
 print(threeway)
-
+#This three way crosstab combines genre, lead studio and year to see how studio activity and genre changed over time. 
 
 
 
