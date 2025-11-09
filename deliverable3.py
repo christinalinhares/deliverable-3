@@ -330,13 +330,24 @@ threeway=pd.crosstab([data["Genre"],data['Lead Studio']],data["Year"])
 print(threeway)
 #This three way crosstab combines genre, lead studio and year to see how studio activity and genre changed over time. 
 
+import seaborn as sns
 
+#6 
+#6.1 a)
+sns.relplot(data=data,x="Rotten Tomatoes %",y="Audience score %",col="Genre",kind="scatter")
 
+#6.1 b)
+sns.relplot(data=data,x="Rotten Tomatoes %",y="Profitability",hue="Genre",size="Audience score %",col="Lead Studio",kind="scatter")
 
+#6.1 c)
+sns.relplot(data=data,x="Year",y="Profitability",kind="line",hue="Genre")
+#This line plot shows the year on the x-axis which is a continuous time variable, which shows how average profitability changes over time for each genre.
 
+#6.1 d)
+sns.relplot(data=data,x="Year",y="Profitability",kind="line",hue="Genre",errorbar="sd")
 
-
-
+#6.1 e)
+sns.relplot(data=data,x="Rotten Tomatoes %",y="Profitability",kind="line",hue="Genre",estimator="mean",errorbar="sd")
 
 
 
