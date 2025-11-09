@@ -277,3 +277,63 @@ sns.displot(data, x="Year", hue="Genre", stat="density", common_norm=False, disc
 # (g) Empirical cumulative distribution
 
 sns.displot(data, x="Year", hue="Genre", kind="ecdf")
+
+
+
+
+
+
+
+
+#5. Multivariate non-graphical EDA 
+#a) 3 different ways crosstab
+#a. 1 
+crosstab_1=pd.crosstab(data["Genre"],data["Rotten Tomatoes %"])
+print(crosstab_1)
+
+#a. 2
+crosstab_2=pd.crosstab(data["Audience score %"],data["Profitability"])
+print(crosstab_2)
+
+#a. 3
+crosstab_3=pd.crosstab(data["Lead Studio"],data["Year"])
+print(crosstab_3)
+
+
+#b) 
+crosstab_1_percent=pd.crosstab(data["Genre"],data["Rotten Tomatoes %"],normalize="index").round(3)
+print(crosstab_1_percent)
+
+#a. 2
+crosstab_2_percent=pd.crosstab(data["Audience score %"],data["Profitability"],normalize="columns").round(3)
+print(crosstab_2_percent)
+
+#a. 3
+crosstab_3_percent=pd.crosstab(data["Lead Studio"],data["Year"],normalize=True).round(3)
+print(crosstab_3_percent)
+
+#c) Three way frequency 
+#We are using Genre, Lead Studio, and Year 
+threeway=pd.crosstab([data["Genre"],data['Lead Studio']],data["Year"])
+print(threeway)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
