@@ -219,33 +219,34 @@ sns.displot(data, x="Rotten Tomatoes %", hue="Genre", kind="ecdf")
 
 #Worldwide Gross
 
+data["Worldwide Gross"] = data["Worldwide Gross"].replace('\$', '', regex=True).astype(float)
 #a) Custom and appropriate number of bins
 
-#sns.displot(data, x="Worldwide Gross", bins=15)
+sns.displot(data, x="Worldwide Gross", bins=15)
 
 #b) Conditioning on other variables
 
-#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", element="step")
+sns.displot(data, x="Worldwide Gross", hue="Lead Studio", element="step")
 
 #c) Stacked histogram
 
-#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="stack")
+sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="stack")
 
 # (d) Dodge bars
 
-#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="dodge")
+sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="dodge")
 
 # (e) Normalized histogram statistics
 
-#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", stat="density", common_norm=False)
+sns.displot(data, x="Worldwide Gross", hue="Lead Studio", stat="density", common_norm=False)
 
 # (f) Kernel density estimation
 
-#sns.displot(data, x="Worldwide Gross", kind="kde")
+sns.displot(data, x="Worldwide Gross", kind="kde")
 
 # (g) Empirical cumulative distribution
 
-#sns.displot(data, x="Worldwide Gross", hue="Lead Studio", kind="ecdf")
+sns.displot(data, x="Worldwide Gross", hue="Lead Studio", kind="ecdf")
 
 
 #Year
@@ -277,6 +278,12 @@ sns.displot(data, x="Year", hue="Genre", stat="density", common_norm=False, disc
 # (g) Empirical cumulative distribution
 
 sns.displot(data, x="Year", hue="Genre", kind="ecdf")
+
+
+# post plotting questions for #4
+
+#Rotten tomatoes %
+
 
 
 
