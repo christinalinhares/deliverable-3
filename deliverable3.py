@@ -356,14 +356,37 @@ sns.relplot(data=data,x="Year",y="Profitability",kind="line",hue="Genre",errorba
 #6.1 e)
 sns.relplot(data=data,x="Rotten Tomatoes %",y="Profitability",kind="line",hue="Genre",estimator="mean",errorbar="sd")
 
+#6.2 
+#6.2 a)
+sns.catplot(data=data,x="Genre",y="Profitability",kind="strip",jitter=True)
+
+#6.2 b)
+sns.catplot(data=data,x="Genre",y="Profitability",kind="strip",jitter=False)
+#explain
 
 
+#6.2 c) 3 variables
+sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="swarm")
 
+#6.2 d)
+sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="box")
 
+#6.2 e) use boxenplot()
+sns.catplot(data=data,x="Genre",y="Profitability",kind="boxen")
 
+#6.2 f) with bandwidth 
+sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="violin",split=True,bw=0.3)
 
+#6.2 g)
+sns.catplot(data=data,x="Genre",y="Profitability",kind="violin",inner="point")
 
+#6.2 h)
+sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="bar")
 
+#6.2 i)
+sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="point")
 
+#6.2 j)
+sns.catplot(data=data,x="Genre",kind="count")
 
 
