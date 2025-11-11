@@ -6,12 +6,14 @@ data = pd.read_csv("movies.csv")
 
 #2 Preliminary steps
 #a)
-top_5_worldwide_gross = data["Worldwide Gross"].value_counts().head(5)
-print(top_5_worldwide_gross)
+top_5_rotten_tomato_score = data.sort_values("Rotten Tomatoes %", ascending=False).head(5)
+print("Top 5 rotten tomatoes scores:")
+print(top_5_rotten_tomato_score)
 
-top_5_audience_score = data["Audience score %"].value_counts().head(5)
+top_5_audience_score = data.sort_values("Audience score %", ascending=False).head(5)
+print("Top 5 audience scores:")
 print(top_5_audience_score)
-#showing top 5 values of worldwide gross and audience score within dataset
+#showing top 5 values of worldwide gross and audience score within dataset, code sorts audeince score values in descending order then prints the first 5 which are the 5 largest values.
 
 #b)
 print(data.shape)
@@ -39,10 +41,20 @@ data = data.drop_duplicates()
 #since the data set is small rather than removing rows with missing values their values were inputted using the mean for numerical columns to maintain a reasonable size for the data set. If the column did not have numerical values then "Unknown" was inputted into the cell.
 
 #d
-#This step is unecessary as no data type needs to be corrected
+data["Worldwide Gross"] = data["Worldwide Gross"].str.replace("$", "", regex=False)
+#This code eliminates the dollar sign in all the cells of the column "Worldwide Gross" so that the values can be treated numerically rather than as strings. The function replace was used and replaced every dollar sign to nothing. Regex=False was included because the pandas module automatically assumes regex=True meaning it will treat the value as a regular expression. The $ is an expression used to end a string by writing regex=False it will consider the dollar sign to be a regular symbol with no specific meaning.
 
 #3 Univariate non-graphical EDA
 #numerical columns
+#mean: average value using the mean function
+#median: middle value of the column thats been sorted in ascending or descending order using sorting and median functions
+#mode: most repeated value using mode function
+#standard deviation: amount of variation in the dataset relative to the mean using the standard deviation function
+#variance: how spread out the data is in relation to its mean using the variance function
+#skewness: measuring if the data is leans to one side  using the skew function
+#kurtosis: measuring how many present the outliers are using the kurtosis function
+#quartiles: values of which 25%, 50%, and 75% of the data lays, using the quantile function
+
 #Audience score %
 print("Audience score EDA")
 print("Mean:", data["Audience score %"].mean())
@@ -77,15 +89,15 @@ print("Kurtosis:", data["Rotten Tomatoes %"].kurt())
 print("Quartiles:\n", data["Rotten Tomatoes %"].quantile([0.25, 0.5, 0.75]))
 
 #Worldwide Gross
-#print("Worldwide Gross EDA")
-#print("Mean:", data["Worldwide Gross"].mean())
-#print("Median:", data["Worldwide Gross"].median())
-#print("Mode:", data["Worldwide Gross"].mode().values)
-#print("Standard deviation", data["Worldwide Gross"].std())
-#print("Variance:", data["Worldwide Gross"].var())
-#print("Skewness:", data["Worldwide Gross"].skew())
-#print("Kurtosis:", data["Worldwide Gross"].kurt())
-#print("Quartiles:\n", data["Worldwide Gross"].quantile([0.25, 0.5, 0.75]))
+print("Worldwide Gross EDA")
+print("Mean:", data["Worldwide Gross"].mean())
+print("Median:", data["Worldwide Gross"].median())
+print("Mode:", data["Worldwide Gross"].mode().values)
+print("Standard deviation", data["Worldwide Gross"].std())
+print("Variance:", data["Worldwide Gross"].var())
+print("Skewness:", data["Worldwide Gross"].skew())
+print("Kurtosis:", data["Worldwide Gross"].kurt())
+print("Quartiles:\n", data["Worldwide Gross"].quantile([0.25, 0.5, 0.75]))
 
 #Year
 print("Year EDA")
@@ -99,24 +111,28 @@ print("Kurtosis:", data["Year"].kurt())
 print("Quartiles:\n", data["Year"].quantile([0.25, 0.5, 0.75]))
 
 #non numerical columns
+#frequency counts: counts the amount of times a string occurs in a column of data
+#proportion: takes the frequency count and uses normalize to convert it to a proportion rather than a count so the frequency is relative to the number of items in the column.
+#mode: finds the item most repeated throughout the column and the number of unique categories in that column
+
 #Film
 print("Film EDA")
 print("Frequency counts:", data["Film"].value_counts())
-#print("Proportion:", data["Film"])
+print("Proportion:", data["Film"].value_counts(normalize=True))
 print("Mode:", data["Film"].mode().values)
 print("Unique values:", data["Film"].nunique())
 
 #Genre
 print("Genre EDA")
 print("Frequency counts:", data["Genre"].value_counts())
-#print("Proportion:", data["Genre"])
+print("Proportion:", data["Genre"].value_counts(normalize=True))
 print("Mode:", data["Genre"].mode().values)
 print("Unique values:", data["Genre"].nunique())
 
 #Lead Studio
 print("Lead Studio EDA")
 print("Frequency counts:", data["Lead Studio"].value_counts())
-#print("Proportion:", data["Lead Studio"])
+print("Proportion:", data["Lead Studio"].value_counts(normalize=True))
 print("Mode:", data["Lead Studio"].mode().values)
 print("Unique values:", data["Lead Studio"].nunique())
 
