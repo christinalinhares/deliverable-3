@@ -300,11 +300,66 @@ sns.displot(data, x="Year", hue="Genre", kind="ecdf")
 
 #Rotten tomatoes %
 
+#a) The distribution is bimodal, with two clear peaks — one around mid-range scores and another around higher scores.
+
+#b)There are a few low outliers, mostly movies scoring below 40%, which fall outside the main concentration of the distribution. These values are noticeably lower than the majority of films.
+
+#c)The data is not strongly skewed. It appears roughly symmetric between the two peaks, although it is bimodal rather than normally distributed.
+
+#d)The distribution is closer to symmetric than skewed. There is a slight tendency for more values on the lower side of the scale, but this effect is weak, so the overall shape remains mostly balanced rather than clearly left- or right-skewed.
+
+#e) The most frequent values fall in the middle range of the scale, with many movies receiving scores between roughly the mid-40s and mid-70s. Very low scores are uncommon, and extremely high scores also occur less often.
 
 
+#Profitability
+
+#a)The distribution is right-skewed, meaning most movies have low to moderate profitability, and a few are extremely profitable.
+
+#b)There are clear outliers at the high end. A few films extend far beyond the main cluster, indicating unusually strong financial performance compared to the rest.
+
+#c)The data shows a wide spread, with many movies grouped close to the bottom and the rest stretching outward. The central tendency lies in the lower portion of the scale, reflecting that most films achieve modest profitability.
+
+#d)The distribution is strongly right-skewed, with a long tail extending toward higher values. This indicates that a small number of highly profitable films pull the distribution to the right.
+
+#e)The low-profitability range is the most common. High-profitability movies are rare.
 
 
+#Rotten Tomatoes %
 
+#a) The Rotten Tomatoes scores are roughly normally distributed. Most movies fall in the middle range, with fewer at the low and high ends.
+
+#b)Because the density bars at the very low end are tall (0–20%), that tells you that there are a few low outliers, where movies received very poor critic scores.
+
+#c)The spread is moderate. Most movies fall in the middle range, with the central tendency around average critic scores.
+
+#d)The distribution is fairly symmetric overall, with only minor leaning due to a few very low scores.
+
+#e)The most frequent values are in the mid-range, where many movies across different genres are grouped.
+
+
+#Worldwide Gross
+
+#a)The data is strongly right-skewed. Most movies earn lower amounts, and only a few earn very high grosses.
+
+#b) Yes Worldwide Gross clearly contains outliers.Moat movies fall between 0-200M$, but there are a few movies far beyond this range.
+
+#c) The values are spread across a very wide range. Most movies are grouped at the low end, so the central tendency lies close to the lower-grossing region.
+
+#d) The distribution is not symmetric. It shows a strong right skew, with a long tail of high-grossing movies stretching far to the right.
+
+#e) The most frequent values are in the lowest grossing range, where the tallest bars appear. Higher grosses occur much less often.
+
+#Year
+
+#a) The distribution of movie release years is slightly bimodal, with noticeable peaks around 2008 and 2010, instead of being evenly spread across years.
+
+#b)There are no real outliers, since the values only range from 2007 to 2011 and all years appear at least a few times. Nothing falls far outside the expected range.
+
+#c)The years are tightly grouped between 2007 and 2011, so the spread is small. The data clusters most around 2008–2010, showing those were the busiest years.
+
+#d)The distribution is not perfectly symmetric.There are more movies clustered in 2008 and 2010, so the shape leans toward a slightly bimodal pattern instead of a clean skew.
+
+#e)The most frequent years are 2008 and 2010, which show the highest counts in the histograms.
 
 
 
