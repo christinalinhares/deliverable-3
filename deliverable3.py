@@ -4,6 +4,9 @@ import seaborn as sns
 
 data = pd.read_csv("movies.csv")
 
+num_cols = ["Audience score %", "Profitability", "Rotten Tomatoes %", "Worldwide Gross", "Year"]
+cat_cols = ["Film", "Genre", "Lead Studio"]
+
 #2 Preliminary steps
 #a)
 top_5_rotten_tomato_score = data.sort_values("Rotten Tomatoes %", ascending=False).head(5)
@@ -31,13 +34,17 @@ data = data.drop_duplicates()
 #find how many duplicates there are and delete them
 
 #c
-#data["Genre"] = data["Genre"].fillna("Unknown")
-#data["Lead Studio"] = data["Lead Studio"].fillna("Unknown")
-#data["Audience score %"] = data["Audience score %"].fillna(data["Audience score %"].mean())
-#data["Profitability"] = data["Profitability"].fillna(data["Profitability"].mean())
-#data["Rotten Tomatoes %"] = data["Rotten Tomatoes %"].fillna(data["Rotten Tomatoes %"].mean())
-#data["Worldwide Gross"] = data["Worldwide Gross"].fillna(data["Worldwide Gross"].mean())
-#data["Year"] = data["Year"].fillna(data["Year"].mean())
+print("Initial null values inspection:", data.isnull().sum())
+#checks how many missing values are in each column
+#using methods b and c since dataset is small
+#numerical values
+data[num_cols] = data[num_cols].fillna(data[num_cols].mean())
+
+#categorical columns
+data[cat_cols] = data[cat_cols].fillna("Unknown")
+
+print("Final null values inspection:", data.isnull().sum())
+#split numerical and categorical columns into their own variables to be easily accessible. The numerical null values were replaced with the mean of the column. The categorical null values were replaced with UNKNOWN. An initial null values inspection was done to check how many null values there were before correcting them. A second inspection was done after the correction to assure the correction took care of all the null values.
 #since the data set is small rather than removing rows with missing values their values were inputted using the mean for numerical columns to maintain a reasonable size for the data set. If the column did not have numerical values then "Unknown" was inputted into the cell.
 
 #d
@@ -45,7 +52,9 @@ data["Worldwide Gross"] = data["Worldwide Gross"].str.replace("$", "", regex=Fal
 #This code eliminates the dollar sign in all the cells of the column "Worldwide Gross" so that the values can be treated numerically rather than as strings. The function replace was used and replaced every dollar sign to nothing. Regex=False was included because the pandas module automatically assumes regex=True meaning it will treat the value as a regular expression. The $ is an expression used to end a string by writing regex=False it will consider the dollar sign to be a regular symbol with no specific meaning.
 
 #3 Univariate non-graphical EDA
+num_cols = ["Audience score %", "Profitability", "Rotten Tomatoes %", "Worldwide Gross", "Year"]
 #numerical columns
+#created a variable to access only the numerical columns and then created a loop so each statistical value can be printed
 #mean: average value using the mean function
 #median: middle value of the column thats been sorted in ascending or descending order using sorting and median functions
 #mode: most repeated value using mode function
@@ -55,86 +64,29 @@ data["Worldwide Gross"] = data["Worldwide Gross"].str.replace("$", "", regex=Fal
 #kurtosis: measuring how many present the outliers are using the kurtosis function
 #quartiles: values of which 25%, 50%, and 75% of the data lays, using the quantile function
 
-#Audience score %
-print("Audience score EDA")
-print("Mean:", data["Audience score %"].mean())
-print("Median:", data["Audience score %"].median())
-print("Mode:", data["Audience score %"].mode().values)
-print("Standard deviation", data["Audience score %"].std())
-print("Variance:", data["Audience score %"].var())
-print("Skewness:", data["Audience score %"].skew())
-print("Kurtosis:", data["Audience score %"].kurt())
-print("Quartiles:\n", data["Audience score %"].quantile([0.25, 0.5, 0.75]))
+#for x in num_cols:
+#    if x in data:
+#        print("Mean:", data[x].mean())
+#        print("Median:", data[x].median())
+#        print("Mode:", data[x].mode().values)
+#        print("Standard deviation:", data[x].std())
+#        print("Variance:", data[x].var())
+#        print("Skewness:", data[x].skew())
+#        print("Kurtosis", data[x].kurt())
+#        print("Quartiles 25%, 50% and 75%:", data[x].quantile([0.25, 0.5, 0.75]))
 
-#Profitability
-print("Profitability EDA")
-print("Mean:", data["Profitability"].mean())
-print("Median:", data["Profitability"].median())
-print("Mode:", data["Profitability"].mode().values)
-print("Standard deviation", data["Profitability"].std())
-print("Variance:", data["Profitability"].var())
-print("Skewness:", data["Profitability"].skew())
-print("Kurtosis:", data["Profitability"].kurt())
-print("Quartiles:\n", data["Profitability"].quantile([0.25, 0.5, 0.75]))
-
-#Rotten Tomatoes %
-print("Rotten Tomatoes % EDA")
-print("Mean:", data["Rotten Tomatoes %"].mean())
-print("Median:", data["Rotten Tomatoes %"].median())
-print("Mode:", data["Rotten Tomatoes %"].mode().values)
-print("Standard deviation", data["Rotten Tomatoes %"].std())
-print("Variance:", data["Rotten Tomatoes %"].var())
-print("Skewness:", data["Rotten Tomatoes %"].skew())
-print("Kurtosis:", data["Rotten Tomatoes %"].kurt())
-print("Quartiles:\n", data["Rotten Tomatoes %"].quantile([0.25, 0.5, 0.75]))
-
-#Worldwide Gross
-print("Worldwide Gross EDA")
-print("Mean:", data["Worldwide Gross"].mean())
-print("Median:", data["Worldwide Gross"].median())
-print("Mode:", data["Worldwide Gross"].mode().values)
-print("Standard deviation", data["Worldwide Gross"].std())
-print("Variance:", data["Worldwide Gross"].var())
-print("Skewness:", data["Worldwide Gross"].skew())
-print("Kurtosis:", data["Worldwide Gross"].kurt())
-print("Quartiles:\n", data["Worldwide Gross"].quantile([0.25, 0.5, 0.75]))
-
-#Year
-print("Year EDA")
-print("Mean:", data["Year"].mean())
-print("Median:", data["Year"].median())
-print("Mode:", data["Year"].mode().values)
-print("Standard deviation", data["Year"].std())
-print("Variance:", data["Year"].var())
-print("Skewness:", data["Year"].skew())
-print("Kurtosis:", data["Year"].kurt())
-print("Quartiles:\n", data["Year"].quantile([0.25, 0.5, 0.75]))
-
+cat_cols = ["Film", "Genre", "Lead Studio"]
+#categorical columns
 #non numerical columns
 #frequency counts: counts the amount of times a string occurs in a column of data
 #proportion: takes the frequency count and uses normalize to convert it to a proportion rather than a count so the frequency is relative to the number of items in the column.
 #mode: finds the item most repeated throughout the column and the number of unique categories in that column
-
-#Film
-print("Film EDA")
-print("Frequency counts:", data["Film"].value_counts())
-print("Proportion:", data["Film"].value_counts(normalize=True))
-print("Mode:", data["Film"].mode().values)
-print("Unique values:", data["Film"].nunique())
-
-#Genre
-print("Genre EDA")
-print("Frequency counts:", data["Genre"].value_counts())
-print("Proportion:", data["Genre"].value_counts(normalize=True))
-print("Mode:", data["Genre"].mode().values)
-print("Unique values:", data["Genre"].nunique())
-
-#Lead Studio
-print("Lead Studio EDA")
-print("Frequency counts:", data["Lead Studio"].value_counts())
-print("Proportion:", data["Lead Studio"].value_counts(normalize=True))
-print("Mode:", data["Lead Studio"].mode().values)
-print("Unique values:", data["Lead Studio"].nunique())
+#for x in cat_cols:
+#    if x in data:
+#        print("Frequency counts:", data[x].value_counts())
+#        print("Proportion:", data[x].value_counts(normalize=True))
+#        print("Mode:", data[x].mode().values)
+#        print("Unique values:", data[x].nunique())
 
 
 #4:Univariate graphical EDA
