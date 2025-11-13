@@ -1,3 +1,8 @@
+#Programming in Science
+#November 14th 2025
+#Tiago Bortoletto Vaz
+#Sofia Abihsera, Christina Linhares, David Pesner
+
 print("deliverable 3")
 import pandas as pd
 import seaborn as sns
