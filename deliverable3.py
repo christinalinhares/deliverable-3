@@ -33,6 +33,12 @@ print("Duplicates:", data.duplicated().sum())
 data = data.drop_duplicates()
 #find how many duplicates there are and delete them
 
+#NOTE THAT d had to be done before c so that the worldwide gross category may be used
+ 
+#d
+data["Worldwide Gross"] = data["Worldwide Gross"].str.replace("$", "", regex=False)
+#This code eliminates the dollar sign in all the cells of the column "Worldwide Gross" so that the values can be treated numerically rather than as strings. The function replace was used and replaced every dollar sign to nothing. Regex=False was included because the pandas module automatically assumes regex=True meaning it will treat the value as a regular expression. The $ is an expression used to end a string by writing regex=False it will consider the dollar sign to be a regular symbol with no specific meaning.
+
 #c
 print("Initial null values inspection:", data.isnull().sum())
 #checks how many missing values are in each column
@@ -57,9 +63,6 @@ print("Final null values inspection:", data.isnull().sum())
 #split numerical and categorical columns into their own variables to be easily accessible. The numerical null values were replaced with the mean of the column. The categorical null values were replaced with UNKNOWN. An initial null values inspection was done to check how many null values there were before correcting them. A second inspection was done after the correction to assure the correction took care of all the null values.
 #since the data set is small rather than removing rows with missing values their values were inputted using the mean for numerical columns to maintain a reasonable size for the data set. If the column did not have numerical values then "Unknown" was inputted into the cell.
 
-#d
-data["Worldwide Gross"] = data["Worldwide Gross"].str.replace("$", "", regex=False)
-#This code eliminates the dollar sign in all the cells of the column "Worldwide Gross" so that the values can be treated numerically rather than as strings. The function replace was used and replaced every dollar sign to nothing. Regex=False was included because the pandas module automatically assumes regex=True meaning it will treat the value as a regular expression. The $ is an expression used to end a string by writing regex=False it will consider the dollar sign to be a regular symbol with no specific meaning.
 
 #3 Univariate non-graphical EDA
 num_cols = ["Audience score %", "Profitability", "Rotten Tomatoes %", "Worldwide Gross", "Year"]
