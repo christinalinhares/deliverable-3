@@ -38,11 +38,21 @@ print("Initial null values inspection:", data.isnull().sum())
 #checks how many missing values are in each column
 #using methods b and c since dataset is small
 #numerical values
-data[num_cols] = data[num_cols].fillna(data[num_cols].mean())
+data["Audience score %"] = pd.to_numeric(data["Audience score %"])
+data["Audience score %"] = data["Audience score %"].fillna(data["Audience score %"].mean())
+data["Profitability"] = pd.to_numeric(data["Profitability"])
+data["Profitability"] = data["Profitability"].fillna(data["Profitability"].mean())
+data["Rotten Tomatoes %"] = pd.to_numeric(data["Rotten Tomatoes %"])
+data["Rotten Tomatoes %"] = data["Rotten Tomatoes %"].fillna(data["Rotten Tomatoes %"].mean())
+data["Worldwide Gross"] = pd.to_numeric(data["Worldwide Gross"])
+data["Worldwide Gross"] = data["Worldwide Gross"].fillna(data["Worldwide Gross"].mean())
+data["Year"] = pd.to_numeric(data["Year"])
+data["Year"] = data["Year"].fillna(data["Year"].mean())
+
 
 #categorical columns
-data[cat_cols] = data[cat_cols].fillna("Unknown")
-
+data["Genre"] = data["Genre"].fillna("Unknown")
+data["Lead Studio"] = data["Lead Studio"].fillna("Unknown")
 print("Final null values inspection:", data.isnull().sum())
 #split numerical and categorical columns into their own variables to be easily accessible. The numerical null values were replaced with the mean of the column. The categorical null values were replaced with UNKNOWN. An initial null values inspection was done to check how many null values there were before correcting them. A second inspection was done after the correction to assure the correction took care of all the null values.
 #since the data set is small rather than removing rows with missing values their values were inputted using the mean for numerical columns to maintain a reasonable size for the data set. If the column did not have numerical values then "Unknown" was inputted into the cell.
@@ -64,16 +74,16 @@ num_cols = ["Audience score %", "Profitability", "Rotten Tomatoes %", "Worldwide
 #kurtosis: measuring how many present the outliers are using the kurtosis function
 #quartiles: values of which 25%, 50%, and 75% of the data lays, using the quantile function
 
-#for x in num_cols:
-#    if x in data:
-#        print("Mean:", data[x].mean())
-#        print("Median:", data[x].median())
-#        print("Mode:", data[x].mode().values)
-#        print("Standard deviation:", data[x].std())
-#        print("Variance:", data[x].var())
-#        print("Skewness:", data[x].skew())
-#        print("Kurtosis", data[x].kurt())
-#        print("Quartiles 25%, 50% and 75%:", data[x].quantile([0.25, 0.5, 0.75]))
+for x in num_cols:
+  if x in data:
+      print("Mean:", pd.to_numeric(data[x]).mean())
+      print("Median:", pd.to_numeric(data[x]).median())
+      print("Mode:", pd.to_numeric(data[x]).mode().values)
+      print("Standard deviation:", pd.to_numeric(data[x]).std())
+      print("Variance:", pd.to_numeric(data[x]).var())
+      print("Skewness:", pd.to_numeric(data[x]).skew())
+      print("Kurtosis", pd.to_numeric(data[x]).kurt())
+      print("Quartiles 25%, 50% and 75%:", pd.to_numeric(data[x]).quantile([0.25, 0.5, 0.75]))
 
 cat_cols = ["Film", "Genre", "Lead Studio"]
 #categorical columns
@@ -81,12 +91,12 @@ cat_cols = ["Film", "Genre", "Lead Studio"]
 #frequency counts: counts the amount of times a string occurs in a column of data
 #proportion: takes the frequency count and uses normalize to convert it to a proportion rather than a count so the frequency is relative to the number of items in the column.
 #mode: finds the item most repeated throughout the column and the number of unique categories in that column
-#for x in cat_cols:
-#    if x in data:
-#        print("Frequency counts:", data[x].value_counts())
-#        print("Proportion:", data[x].value_counts(normalize=True))
-#        print("Mode:", data[x].mode().values)
-#        print("Unique values:", data[x].nunique())
+for x in cat_cols:
+  if x in data:
+      print("Frequency counts:", data[x].value_counts())
+      print("Proportion:", data[x].value_counts(normalize=True))
+      print("Mode:", data[x].mode().values)
+      print("Unique values:", data[x].nunique())
 
 
 #4:Univariate graphical EDA
