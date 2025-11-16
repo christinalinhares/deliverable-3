@@ -440,3 +440,15 @@ sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="point"
 #6.2 j) Bar plot 
 sns.catplot(data=data,x="Genre",kind="count")
 #This bar plot shows the number of movies in each genre. Comedy has the highest number of movies in the dataset,followed by romance and drama. Genres like animation, fantasy, and action appear less frequently. 
+
+
+#6.3
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8,6))
+plt.hist2d(data["Audience score %"],data["Profitability"])
+plt.xlabel("Audience score %")
+plt.ylabel("Profitability")
+plt.title("Heatmap of Audience score % vs Profitability ")
+plt.show()
