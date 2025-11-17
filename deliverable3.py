@@ -115,6 +115,7 @@ for x in cat_cols:
 
 sns.displot(data, x="Audience score %", bins=20)
 
+
 #b) Conditioning on other variables
 
 sns.displot(data, x="Audience score %", hue="Genre", element="step")
