@@ -6,6 +6,7 @@
 print("deliverable 3")
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 data = pd.read_csv("movies.csv")
 
@@ -382,64 +383,94 @@ print(threeway)
 #6 Multivariate graphical EDA
 #6.1 a) Faceting feature 
 sns.relplot(data=data,x="Rotten Tomatoes %",y="Audience score %",col="Genre",kind="scatter")
+plt.title("Scatter plot rotten tomatoes vs audience score seperated by genre")
+plt.show()
 #This plot shows the relationship between rotten tomatoes % and audience score % across different genres. Each represents a specific genre, which helps visualize whether critical and audience ratings tend to align more strongly in certain genres than others.
 
 #6.1 b) Plot representing 5 variables at once
 sns.relplot(data=data,x="Rotten Tomatoes %",y="Profitability",hue="Genre",size="Audience score %",col="Lead Studio",kind="scatter")
+plt.title("Scatter plot representing rotten tomatoes %, profitability, genre, audience score % and lead studio")
+plt.show()
 #This scatter plot  visualizes 5 variables: Rotten tomatoes, profitability, genre, audience score and lead studios. Each subplot represents a lead studio, with the x-axis showing rotten tomatoes and the y-axis showing profitability. The color of eahc point indicates the genre, and the size of each point represents the audience score. 
 
 #6.1 c) Line plot
 sns.relplot(data=data,x="Year",y="Profitability",kind="line",hue="Genre")
+plt.title("Line plot year vs profitability")
+plt.show()
 #This line plot shows how the average profitability of movies changed over time for each genre. The x-axis represents the year, while the y-axis represents the profitability. Each colored line corresponds to a genre, allowing us to observe which genres were more or less profitable during the years 2007-2011. The x-axis which is a continuous time variable, which shows how average profitability changes over time for each genre.
 
 #6.1 d) Standard deviation
 sns.relplot(data=data,x="Year",y="Profitability",kind="line",hue="Genre",errorbar="sd")
+plt.title("Line plot year vs profitability with standard deviation error bars")
+plt.show()
 #This plot shows the average profitability over time for each genre, with shaded areas representing the standard deviation. The shaded regions illustrate the variation of profitability among movies within each genre. A wider shaded area means that the profitability values were more spread out, while narrower area means the values are more stable. This helps identify which genres had more fluctuating probability between the years 2007 and 2011.
 
 #6.1 e) Linear regression 
 sns.relplot(data=data,x="Rotten Tomatoes %",y="Profitability",kind="line",hue="Genre",estimator="mean",errorbar="sd")
+plt.title("Linear regression rotten tomatoes vs profitability")
+plt.show()
 #This plot shows the relationship between rotten tomatoes ratings and profitability for different genres.The lines represent the average profitability for each rotten tomatoe score. We can observe how profitability tends to change as critic scores increase.
 
 #6.2 Visualizing categorical data
 #6.2 a) Scatter plot with jitter enabled
 sns.catplot(data=data,x="Genre",y="Profitability",kind="strip",jitter=True)
+plt.title("Scatter plot genre vs profitability jitter enabled")
+plt.show()
 #This shows the profitability of movies for each genre, using jitter to prevent overlapping points. Enabling jitter spreads the data slightly along the x-axis, making it easier to distinguish individual movies with similar profitability values. It helps visualize how profitability varies among different genres while ensuring that dense areas of data are easier to intepret.
 
 #6.2 b) Scatter plot with jitter disabled 
 sns.catplot(data=data,x="Genre",y="Profitability",kind="strip",jitter=False)
+plt.title("Scatter plot genre vs profitability jitter disabled")
+plt.show()
 #This plot shows the profitability of movies across different genres, with jitter disabled. Disabling jitter stacks the points vertically, making it easier to see where multiple movies share the same profitability values. Genre was chosen on the x-axis because it allows comparisons between categories, and profitability on the y-axis because it is continuous, helping visualize which genres tend to produce more profitable movies.
 
 
 #6.2 c) "beeswarm" plot representing 3 variables 
 sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="swarm")
+plt.title("Beeswarm plot genre vs profitability seperated by lead studio")
+plt.show()
 #This shows the profitability of movies across different genres and lead studios. Each point represents a studio, with colors identifying which studio. We can see that comedy and romance genres have the widest spread which means their profitability varies more compared to others. 
 
 #6.2 d) Box plot representing 3 variables 
 sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="box")
+plt.title("Box plot genre vs profitability seperated by lead studio")
+plt.show()
 #The box plot shows the distribution of profitability across different movie genres and lead studios. Each colored box represents a studio.
 
 #6.2 e) use boxenplot()
 sns.catplot(data=data,x="Genre",y="Profitability",kind="boxen")
+plt.title("Boxen plot genre vs profitability")
+plt.show()
 #This plot shows the shape of the profitability distribution for each movie genre. The boxenplot shows the quantile layers, giving more detailed view. We can see that comedy and romance genres have higher variation in profitability, while fantasy and action have smaller range. 
 
 #6.2 f) Split violin plot representing 3 variables with bandwidth adjusted 
-sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="violin",bw=1)
+sns.catplot(data=data,x="Genre",y="Profitability",hue="Year",kind="violin", bw=1.5, cut=0)
+plt.title("split violin plot genre vs profitability seperated by year")
+plt.show()
 #This plot represents the distribution of profitability across genres and studios. The bandwidth was adjusted to smooth the shapes and make differences between studios clearer.
 
 #6.2 g) Violin plot with scatter points 
 sns.catplot(data=data,x="Genre",y="Profitability",kind="violin",inner="point")
+plt.title("Violin plot with scatter points genre vs profitability")
+plt.show()
 #The violin plot displays the distribution of profitability across different genres.The shape of the violin indicates how profitability values are spread within each genre, showing where the most data points are concentrated. Drama and comedy show wider distributions, while animation and action have smaller ranges.
 
 #6.2 h) Bar plot representing 3 variables shpwing 97% confidence intervals 
 sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="bar",ci=97)
+plt.title("Bar plot 97% confidence interval of genre vs profitability")
+plt.show()
 #This bar plot shows the average profitability by genre and lead studio with 97% confidence intervals. This shows which studios tend to produce more profitable films within each genre.
 
 #6.2 i) Point plot representing 3 variables showing 90% confidence intervals 
 sns.catplot(data=data,x="Genre",y="Profitability",hue="Lead Studio",kind="point",ci=90,linestyle="--")
+plt.title("Point plot with 90% confidence intervals of genre vs profitability")
+plt.show()
 #This plot displays the average profitability of each lead studio across different genres, with 90% confidence intervals.Each color represents a different studio and the dashed lines connect profitability trends across genres.
 
 #6.2 j) Bar plot 
 sns.catplot(data=data,x="Genre",kind="count")
+plt.title("Bar plot: count of movies by genre" )
+plt.show()
 #This bar plot shows the number of movies in each genre. Comedy has the highest number of movies in the dataset,followed by romance and drama. Genres like animation, fantasy, and action appear less frequently. 
 
 
