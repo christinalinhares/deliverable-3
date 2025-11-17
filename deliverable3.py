@@ -446,9 +446,61 @@ sns.catplot(data=data,x="Genre",kind="count")
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(8,6))
-plt.hist2d(data["Audience score %"],data["Profitability"])
+#a)
+
+plt.figure(figsize=(8, 6))
+
+# Adjust bins (you can change 20, 20 depending on how fine you want it)
+plt.hist2d(
+    data["Audience score %"],
+    data["Profitability"],
+    bins=(20, 20)      # controls bin width in x and y
+)
+
+plt.colorbar(label="Count")   # color intensity bar
+
 plt.xlabel("Audience score %")
 plt.ylabel("Profitability")
-plt.title("Heatmap of Audience score % vs Profitability ")
+plt.title("Heatmap of Audience score % vs Profitability")
+
+plt.tight_layout()
+plt.show()
+
+#b)
+
+import seaborn as sns
+
+sns.displot(
+    data,
+    x="Audience score %",
+    y="Profitability",
+    kind="kde",
+    levels=10,           # number of contour curves
+    thresh=0.05,         # lowest level shown (0 = show everything)
+    fill=False,          # keep contour lines only
+    height=6,
+    aspect=1.2
+)
+
+plt.title("Bivariate KDE Contour Plot: Audience Score vs Profitability")
+plt.tight_layout()
+plt.show()
+
+
+#c)
+
+sns.displot(
+    data=data,
+    x="Audience score %",
+    y="Profitability",
+    kind="kde",
+    fill=True,        # makes it look like a heatmap
+    thresh=0.05,      # adjust lowest density level
+    levels=20
+)
+
+plt.xlabel("Audience score %")
+plt.ylabel("Profitability")
+plt.title("KDE Heatmap of Audience Score % vs Profitability")
+plt.tight_layout()
 plt.show()
