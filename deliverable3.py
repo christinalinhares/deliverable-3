@@ -478,8 +478,7 @@ sns.displot(
     levels=10,           # number of contour curves
     thresh=0.05,         # lowest level shown (0 = show everything)
     fill=False,          # keep contour lines only
-    height=6,
-    aspect=1.2
+    
 )
 
 plt.title("Bivariate KDE Contour Plot: Audience Score vs Profitability")
