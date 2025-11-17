@@ -115,32 +115,51 @@ for x in cat_cols:
 #a) Custom and appropriate number of bins
 
 sns.displot(data, x="Audience score %", bins=20)
-
+plt.title("Histogram of Audience Score % with Custom Bins")
+plt.show()
 
 #b) Conditioning on other variables
 
 sns.displot(data, x="Audience score %", hue="Genre", element="step")
 
+plt.title("Audience Score % Conditioned on Genre")
+plt.show()
+
 #c) Stacked histogram
 
 sns.displot(data, x="Audience score %", hue="Genre", multiple="stack")
+
+plt.title("Stacked Histogram of Audience Score % by Genre")
+plt.show()
 
 # (d) Dodge bars
 
 sns.displot(data, x="Audience score %", hue="Genre", multiple="dodge")
 
+plt.title("Dodge Histogram of Audience Score % by Genre")
+plt.show()
+
+
 # (e) Normalized histogram statistics
 
 sns.displot(data, x="Audience score %", hue="Genre", stat="density", common_norm=False)
+
+plt.title("Normalized Histogram of Audience Score % by Genre")
+plt.show()
 
 # (f) Kernel density estimation
 
 sns.displot(data, x="Audience score %", kind="kde")
 
+plt.title("KDE Plot of Audience Score %")
+plt.show()
+
 # (g) Empirical cumulative distribution
 
 sns.displot(data, x="Audience score %", hue="Genre", kind="ecdf")
 
+plt.title("ECDF of Audience Score % by Genre")
+plt.show()
 
 #Profitability
 
@@ -148,30 +167,50 @@ sns.displot(data, x="Audience score %", hue="Genre", kind="ecdf")
 
 sns.displot(data, x="Profitability", bins=15)
 
+plt.title("Histogram of Profitability with Custom Bins")
+plt.show()
+
 #b) Conditioning on other variables
 
 sns.displot(data, x="Profitability", hue="Lead Studio", element="step")
+
+plt.title("Profitability Conditioned on Lead Studio")
+plt.show()
 
 #c) Stacked histogram
 
 sns.displot(data, x="Profitability", hue="Lead Studio", multiple="stack")
 
+plt.title("Stacked Histogram of Profitability by Lead Studio")
+plt.show()
+
 # (d) Dodge bars
 
 sns.displot(data, x="Profitability", hue="Lead Studio", multiple="dodge")
+
+plt.title("Dodge Histogram of Profitability by Lead Studio")
+plt.show()
 
 # (e) Normalized histogram statistics
 
 sns.displot(data, x="Profitability", hue="Lead Studio", stat="density", common_norm=False)
 
+plt.title("Normalized Histogram of Profitability by Lead Studio")
+plt.show()
+
 # (f) Kernel density estimation
 
 sns.displot(data, x="Profitability", kind="kde")
+
+plt.title("KDE Plot of Profitability")
+plt.show()
 
 # (g) Empirical cumulative distribution
 
 sns.displot(data, x="Profitability", hue="Lead Studio", kind="ecdf")
 
+plt.title("ECDF of Profitability by Lead Studio")
+plt.show()
 
 #Rotten Tomatoes %
 
@@ -179,30 +218,51 @@ sns.displot(data, x="Profitability", hue="Lead Studio", kind="ecdf")
 
 sns.displot(data, x="Rotten Tomatoes %", bins=20)
 
+plt.title("Histogram of Rotten Tomatoes % with Custom Bins")
+plt.show()
+
 #b) Conditioning on other variables
 
 sns.displot(data, x="Rotten Tomatoes %", hue="Genre", element="step")
+
+plt.title("Rotten Tomatoes % Conditioned on Genre")
+plt.show()
+
 
 #c) Stacked histogram
 
 sns.displot(data, x="Rotten Tomatoes %", hue="Genre", multiple="stack")
 
+plt.title("Stacked Histogram of Rotten Tomatoes % by Genre")
+plt.show()
+
 # (d) Dodge bars
 
 sns.displot(data, x="Rotten Tomatoes %", hue="Genre", multiple="dodge")
+
+plt.title("Dodge Histogram of Rotten Tomatoes % by Genre")
+plt.show()
 
 # (e) Normalized histogram statistics
 
 sns.displot(data, x="Rotten Tomatoes %", hue="Genre", stat="density", common_norm=False)
 
+plt.title("Normalized Histogram of Rotten Tomatoes % by Genre")
+plt.show()
+
 # (f) Kernel density estimation
 
 sns.displot(data, x="Rotten Tomatoes %", kind="kde")
+
+plt.title("KDE Plot of Rotten Tomatoes %")
+plt.show()
 
 # (g) Empirical cumulative distribution
 
 sns.displot(data, x="Rotten Tomatoes %", hue="Genre", kind="ecdf")
 
+plt.title("ECDF of Rotten Tomatoes % by Genre")
+plt.show()
 
 
 #Worldwide Gross
@@ -212,30 +272,49 @@ data["Worldwide Gross"] = data["Worldwide Gross"].replace('\$', '', regex=True).
 
 sns.displot(data, x="Worldwide Gross", bins=15)
 
+plt.title("Histogram of Worldwide Gross with Custom Bins")
+plt.show()
+
 #b) Conditioning on other variables
 
 sns.displot(data, x="Worldwide Gross", hue="Lead Studio", element="step")
+
+plt.title("Worldwide Gross Conditioned on Lead Studio")
+plt.show()
 
 #c) Stacked histogram
 
 sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="stack")
 
+plt.title("Stacked Histogram of Worldwide Gross by Lead Studio")
+plt.show()
 # (d) Dodge bars
 
 sns.displot(data, x="Worldwide Gross", hue="Lead Studio", multiple="dodge")
+
+plt.title("Dodge Histogram of Worldwide Gross by Lead Studio")
+plt.show()
 
 # (e) Normalized histogram statistics
 
 sns.displot(data, x="Worldwide Gross", hue="Lead Studio", stat="density", common_norm=False)
 
+plt.title("Normalized Histogram of Worldwide Gross by Lead Studio")
+plt.show()
+
 # (f) Kernel density estimation
 
 sns.displot(data, x="Worldwide Gross", kind="kde")
+
+plt.title("KDE Plot of Worldwide Gross")
+plt.show()
 
 # (g) Empirical cumulative distribution
 
 sns.displot(data, x="Worldwide Gross", hue="Lead Studio", kind="ecdf")
 
+plt.title("ECDF of Worldwide Gross by Lead Studio")
+plt.show()
 
 #Year
 
@@ -243,21 +322,37 @@ sns.displot(data, x="Worldwide Gross", hue="Lead Studio", kind="ecdf")
 
 sns.displot(data, x="Year", discrete=True)
 
+plt.title("Histogram of Movie Release Year")
+plt.show()
+
 #b) Conditioning on other variables
 
 sns.displot(data, x="Year", hue="Genre", element="step", discrete=True)
+
+plt.title("Release Year Conditioned on Genre")
+plt.show()
 
 #c) Stacked histogram
 
 sns.displot(data, x="Year", hue="Genre", multiple="stack", discrete=True)
 
+plt.title("Stacked Histogram of Release Year by Genre")
+plt.show()
+
 # (d) Dodge bars
 
 sns.displot(data, x="Year", hue="Genre", multiple="dodge", discrete=True)
 
+plt.title("Dodge Histogram of Release Year by Genre")
+plt.show()
+
+
 # (e) Normalized histogram statistics
 
 sns.displot(data, x="Year", hue="Genre", stat="density", common_norm=False, discrete=True)
+
+plt.title("Normalized Histogram of Release Year by Genre")
+plt.show()
 
 # (f) Kernel density estimation
 
@@ -266,6 +361,9 @@ sns.displot(data, x="Year", hue="Genre", stat="density", common_norm=False, disc
 # (g) Empirical cumulative distribution
 
 sns.displot(data, x="Year", hue="Genre", kind="ecdf")
+
+plt.title("ECDF of Release Year by Genre")
+plt.show()
 
 
 # post plotting questions for #4
