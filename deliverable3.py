@@ -545,7 +545,7 @@ plt.show()
 sns.catplot(data=data,x="Genre",y="Profitability",hue="Year",kind="violin", bw=1.5, cut=0)
 plt.title("split violin plot genre vs profitability seperated by year")
 plt.show()
-#This plot represents the distribution of profitability across genres and studios. The bandwidth was adjusted to smooth the shapes and make differences between studios clearer.
+#This plot represents the distribution of profitability across genres and years. The bandwidth was adjusted to smooth the shapes and make differences between the years clearer.
 
 #6.2 g) Violin plot with scatter points 
 sns.catplot(data=data,x="Genre",y="Profitability",kind="violin",inner="point")
@@ -573,8 +573,6 @@ plt.show()
 
 
 #6.3
-
-import matplotlib.pyplot as plt
 
 #a)
 
