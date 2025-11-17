@@ -268,7 +268,7 @@ sns.displot(data, x="Year", hue="Genre", kind="ecdf")
 
 # post plotting questions for #4
 
-#Rotten tomatoes %
+#Audience score %
 
 #a) The distribution is bimodal, with two clear peaks — one around mid-range scores and another around higher scores.
 
