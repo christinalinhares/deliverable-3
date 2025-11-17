@@ -382,22 +382,32 @@ print(threeway)
 #6 Multivariate graphical EDA
 #6.1 a) Faceting feature 
 sns.relplot(data=data,x="Rotten Tomatoes %",y="Audience score %",col="Genre",kind="scatter")
+plt.title("Scatter plot rotten tomatoes vs audience score seperated by genre")
+plt.show()
 #This plot shows the relationship between rotten tomatoes % and audience score % across different genres. Each represents a specific genre, which helps visualize whether critical and audience ratings tend to align more strongly in certain genres than others.
 
 #6.1 b) Plot representing 5 variables at once
 sns.relplot(data=data,x="Rotten Tomatoes %",y="Profitability",hue="Genre",size="Audience score %",col="Lead Studio",kind="scatter")
+plt.title("Scatter plot representing rotten tomatoes %, profitability, genre, audience score % and lead studio")
+plt.show()
 #This scatter plot  visualizes 5 variables: Rotten tomatoes, profitability, genre, audience score and lead studios. Each subplot represents a lead studio, with the x-axis showing rotten tomatoes and the y-axis showing profitability. The color of eahc point indicates the genre, and the size of each point represents the audience score. 
 
 #6.1 c) Line plot
 sns.relplot(data=data,x="Year",y="Profitability",kind="line",hue="Genre")
+plt.title("Line plot year vs profitability")
+plt.show()
 #This line plot shows how the average profitability of movies changed over time for each genre. The x-axis represents the year, while the y-axis represents the profitability. Each colored line corresponds to a genre, allowing us to observe which genres were more or less profitable during the years 2007-2011. The x-axis which is a continuous time variable, which shows how average profitability changes over time for each genre.
 
 #6.1 d) Standard deviation
 sns.relplot(data=data,x="Year",y="Profitability",kind="line",hue="Genre",errorbar="sd")
+plt.title("Line plot year vs profitability with standard deviation error bars")
+plt.show()
 #This plot shows the average profitability over time for each genre, with shaded areas representing the standard deviation. The shaded regions illustrate the variation of profitability among movies within each genre. A wider shaded area means that the profitability values were more spread out, while narrower area means the values are more stable. This helps identify which genres had more fluctuating probability between the years 2007 and 2011.
 
 #6.1 e) Linear regression 
 sns.relplot(data=data,x="Rotten Tomatoes %",y="Profitability",kind="line",hue="Genre",estimator="mean",errorbar="sd")
+plt.title("Linear regression rotten tomatoes vs profitability")
+plt.show()
 #This plot shows the relationship between rotten tomatoes ratings and profitability for different genres.The lines represent the average profitability for each rotten tomatoe score. We can observe how profitability tends to change as critic scores increase.
 
 #6.2 Visualizing categorical data
